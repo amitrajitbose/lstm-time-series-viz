@@ -9,10 +9,7 @@ from tensorflow.keras.layers import Dense,Dropout,LSTM,Activation
 import matplotlib.pyplot as plt
 class TSViz(object):
     """LSTM On Time Series Data Visualizer"""
-    
-
     def __init__(self, data, verbose,epoch,lag,dropout):
-        
         self.data = data
         self.lag = lag
         self.epoch = epoch
@@ -29,7 +26,7 @@ class TSViz(object):
 
     def data_prepare(self):
         series_matrix=np.array([[j for j in self.data[i:i+self.lag]] for i in range(0,len(self.data)-self.lag+1)])
-        X, Y = series_matrix[:,0:-1], series_matrix[:,[2]]
+        X, Y = series_matrix[:,0:-1], series_matrix[:,[-1]]
         test_size=int(self.test_size*X.shape[0])
         train_size=X.shape[0]-test_size
         X_train,X_test,Y_train,Y_test=X[0:train_size,:],X[0:test_size,:],Y[0:train_size],Y[0:test_size]
@@ -67,16 +64,16 @@ class TSViz(object):
         
     
     def mastermethod(self):
-      X_train,X_test,Y_train,Y_test = self.data_prepare()
-      self.build_model()
-      self.fit(X_train, Y_train)
-      aa,bb=self.predict(self.X_train, self.Y_train)
-      plt.plot(aa)
-      plt.plot(bb)
-      plt.legend(['Actual','Predicted'],loc='upper right')
-      plt.show()
-      aa,bb=self.predict(self.X_test, self.Y_test)
-      plt.plot(aa)
-      plt.plot(bb)
-      plt.legend(['Actual','Predicted'],loc='upper right')
-      plt.show()
+        X_train,X_test,Y_train,Y_test = self.data_prepare()
+        self.build_model()
+        self.fit(X_train, Y_train)
+        aa,bb=self.predict(self.X_train, self.Y_train)
+        plt.plot(aa)
+        plt.plot(bb)
+        plt.legend(['Actual','Predicted'],loc='upper right')
+        plt.show()
+        aa,bb=self.predict(self.X_test, self.Y_test)
+        plt.plot(aa)
+        plt.plot(bb)
+        plt.legend(['Actual','Predicted'],loc='upper right')
+        plt.show()
