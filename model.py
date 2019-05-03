@@ -28,7 +28,7 @@ class TSViz(object):
 
     def data_prepare(self):
         series_matrix=np.array([[j for j in self.data[i:i+self.lag]] for i in range(0,len(self.data)-self.lag+1)])
-        X, Y = series_matrix[:,0:-1], series_matrix[:,[2]]
+        X, Y = series_matrix[:,0:-1], series_matrix[:,[-1]]
         test_size=int(self.test_size*X.shape[0])
         train_size=X.shape[0]-test_size
         X_train,X_test,Y_train,Y_test=X[0:train_size,:],X[0:test_size,:],Y[0:train_size],Y[0:test_size]
@@ -40,7 +40,7 @@ class TSViz(object):
 
     def build_model(self):
         model=Sequential()
-        model.add(LSTM(10, input_shape=(2,1)))
+        model.add(LSTM(10, input_shape=(self.lag-1,1)))
         model.add(Dropout(self.dropout))
         model.add(Dense(1, activation='linear'))
         model.compile(loss='mse', optimizer='adam',metrics=['mse'])
@@ -69,10 +69,9 @@ class TSViz(object):
         self.predict(X_train, Y_train)
         self.predict(X_test, Y_test)
 
-'''
+
 import numpy as np
 data = np.sin(np.linspace(-5*np.pi, 5*np.pi, 201))
 #for ep in range(1,101,50):
-tsvz = TSViz(data, lag=3, epoch=200, verbose=0)
+tsvz = TSViz(data, lag=2, epoch=200, verbose=0)
 tsvz.mastermethod()
-'''
