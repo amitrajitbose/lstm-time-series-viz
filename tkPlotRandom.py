@@ -78,7 +78,7 @@ while (epoc>0):
 	Label(master, text=500-epoc).grid(row=1, sticky=W) 
 	epoc=epoc-1
 	master.update()
-	time.sleep(0.001)
+	time.sleep(0.1)
 #plt.plot(a)
 #Label(master, text=var1).grid(row=1, sticky=W) 
 
