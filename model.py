@@ -69,8 +69,10 @@ class TSViz(object):
         self.predict(X_train, Y_train)
         self.predict(X_test, Y_test)
 
+'''
 import numpy as np
 data = np.sin(np.linspace(-5*np.pi, 5*np.pi, 201))
 #for ep in range(1,101,50):
 tsvz = TSViz(data, lag=3, epoch=200, verbose=0)
 tsvz.mastermethod()
+'''
