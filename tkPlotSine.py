@@ -10,6 +10,7 @@ from matplotlib.figure import Figure
 import time
 import matplotlib.pyplot as plt
 from tkinter import *
+import sys
 #The Data
 data = np.sin(np.linspace(-5*np.pi, 5*np.pi, 201))
 
@@ -75,18 +76,19 @@ def playIt():
 master = Tk() 
 master.title('LSTM') 
 
-
-
 Label(master,text='Dropout').grid(row=1,column=1,sticky=N)
 w1 = Scale(master, from_=10, to=90)
 w1.grid(row=1,column=1,sticky=W) 
 
 Label(master,text='Lag').grid(row=1,column=2,sticky=N)
 w2 = Scale(master, from_=2, to=10)
-w2.grid(row=1,column=2,sticky=W,padx=30, pady=30) 
+w2.grid(row=1,column=2,sticky=W,padx=20, pady=30) 
 
 B = Button(text ="Start", command = playIt)
 B.grid(row=1,column=1,sticky=W,padx=80, pady=50)
+
+ex = Button(text ="Quit", command = sys.exit)
+ex.grid(row=1, column=1,sticky=W,padx=160, pady=30)
 #plt.plot(a)
 #Label(master, text=var1).grid(row=1, sticky=W) 
 
