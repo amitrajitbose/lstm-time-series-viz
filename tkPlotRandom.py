@@ -13,7 +13,7 @@ master = Tk()
 master.title('LSTM') 
 
 #The Data
-data = np.sin(np.linspace(-5*np.pi, 5*np.pi, 201))
+data = 5*np.random.randn(1,80).reshape(80)
 
 #Preprocess
 lag=3
@@ -33,16 +33,15 @@ model.add(Dense(1, activation='linear'))
 model.compile(loss='mse', optimizer='adam',metrics=['mse'])
 
 #Epoch
-epoc=100
+epoc=500
 mse=[]
 vmse=[]
-
 while (epoc>0):
 	history=model.fit(X_train, Y_train, validation_split=0.2, epochs=1, shuffle=False,verbose=0)
 #Evals
 	fig = Figure(figsize=(5, 3), dpi=100,frameon=False)
-	mse.extend(history.history['loss'])
-	vmse.extend(history.history['val_loss'])
+	mse.append(*history.history['loss'])
+	vmse.append(*history.history['val_loss'])
 	fig.add_subplot(111).plot(mse)
 	fig.add_subplot(111).plot(vmse)
 	#fig.add_subplot(111).plot(history.history['mean_squared_error'])
@@ -76,7 +75,7 @@ while (epoc>0):
 	canvas =FigureCanvasTkAgg(fig, master=master)
 	canvas.draw()
 	canvas.get_tk_widget().grid(row=2,column=2)
-	Label(master, text=100-epoc).grid(row=1, sticky=W) 
+	Label(master, text=500-epoc).grid(row=1, sticky=W) 
 	epoc=epoc-1
 	master.update()
 	time.sleep(0.001)
