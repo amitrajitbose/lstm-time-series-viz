@@ -11,10 +11,10 @@ class TSViz(object):
     """LSTM On Time Series Data Visualizer"""
     
 
-    def __init__(self, data, verbose,epoch,dropout):
+    def __init__(self, data, verbose,epoch,lag,dropout):
         
         self.data = data
-        self.lag = 3
+        self.lag = lag
         self.epoch = epoch
         self.test_size = 0.3
         self.dropout = dropout
@@ -45,7 +45,7 @@ class TSViz(object):
 
     def build_model(self):
         model=Sequential()
-        model.add(LSTM(10, input_shape=(2,1)))
+        model.add(LSTM(10, input_shape=(self.lag-1,1)))
         model.add(Dropout(self.dropout))
         model.add(Dense(1, activation='linear'))
         model.compile(loss='mse', optimizer='adam')
