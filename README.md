@@ -4,7 +4,7 @@
 
 ---------------------------------------
 
-![](https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa4%2FTensorFlowLogo.png&f=1)
+![](http://www.microway.com/wp-content/uploads/TensorFlow_icon_180x148.png)
 
 [![PyPI version](https://badge.fury.io/py/tensorflow-gpu%2F2.0.0a0.svg)](https://badge.fury.io/py/tensorflow-gpu%2F2.0.0a0)
 
