@@ -42,8 +42,9 @@ class TSViz(object):
 
     def build_model(self):
         model=Sequential()
-        model.add(LSTM(10, input_shape=(self.lag-1,1)))
+        model.add(LSTM(30, input_shape=(self.lag-1,1),return_sequences= True))
         model.add(Dropout(self.dropout))
+        model.add(LSTM(30))
         model.add(Dense(1, activation='linear'))
         model.compile(loss='mse', optimizer='adam')
         self.model = model
