@@ -7,6 +7,7 @@ from lstm_ts_viz_class import TSViz
 from matplotlib.backends.backend_tkagg import (
 	FigureCanvasTkAgg, NavigationToolbar2Tk)
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
 import time
 import matplotlib.pyplot as plt
 from tkinter import *
@@ -53,8 +54,13 @@ def playIt():
 		fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
 		mse.extend(hist.history['loss'])
 		vmse.extend(hist.history['val_loss'])
-		fig.add_subplot(111).plot(mse)
-		fig.add_subplot(111).plot(vmse)
+		plt.xlim(0,epoc)
+		ax1=fig.add_subplot(111,xlim=(0,epoc)).plot(mse)
+		ax2=fig.add_subplot(111,xlim=(0,epoc)).plot(vmse)
+		#print(type(ax1))
+		#print(ax1)
+		#ax1.get_geometry()
+		#ax2.Axes.set_xlim(0,epoc)
 		#fig.add_subplot(111).plot(history.history['mean_squared_error'])
 		fig.legend(['Train','Val'])
 		fig.suptitle('Evaluation')
