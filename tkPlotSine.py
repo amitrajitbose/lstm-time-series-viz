@@ -75,7 +75,7 @@ def playIt():
 		return
 	mse=[]
 	vmse=[]
-	maxMse=100
+	maxMse=0
 	i=0
 	tt=TSViz(data,verbose=0,epoch=1,lag=w2.get(),dropout=w1.get()/100, test_size=w4.get()/100)
 	#print("Dropout: ",tt.dropout,"%")
@@ -89,8 +89,8 @@ def playIt():
 		vmse.extend(hist.history['val_loss'])
 		maxMse=max(maxMse,max(*mse,*vmse))
 		plt.xlim(0,epoc)
-		ax1=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse)).plot(mse)
-		ax2=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse)).plot(vmse)
+		ax1=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse+(maxMse/10))).plot(mse)
+		ax2=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse+(maxMse/10))).plot(vmse)
 		fig.legend(['Train','Val'])
 		fig.suptitle('Evaluation')
 		canvas =FigureCanvasTkAgg(fig, master=master)
