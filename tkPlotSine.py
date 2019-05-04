@@ -29,6 +29,32 @@ mse=[]
 vmse=[]
 i=0
 play=0
+
+
+
+def startScreen():
+	i=0
+	fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
+	fig.add_subplot(111).plot(0)
+	fig.suptitle('Evaluation')
+	canvas =FigureCanvasTkAgg(fig, master=master)
+	canvas.draw()
+	canvas.get_tk_widget().grid(row=1,column=6,columnspan=1)	
+	fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
+	fig.add_subplot(111).plot(0)
+	fig.suptitle('Training Set')
+	canvas =FigureCanvasTkAgg(fig, master=master)
+	canvas.draw()
+	canvas.get_tk_widget().grid(row=2,column=1,columnspan=5)
+	fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
+	fig.add_subplot(111).plot(0)
+	fig.suptitle('Testing Set')
+	canvas = FigureCanvasTkAgg(fig, master=master)
+	canvas.draw()
+	canvas.get_tk_widget().grid(row=2,column=6,columnspan=1)
+	Label(master, text=str('Epoch='+str(i))).grid(row=1, column=4, sticky=S) 
+	
+
 def playIt():
 	if(var1.get()=='Select Data'):
 		messagebox.showinfo("Error", "Select A Series To Plot")
@@ -49,6 +75,7 @@ def playIt():
 		return
 	mse=[]
 	vmse=[]
+	maxMse=100
 	i=0
 	tt=TSViz(data,verbose=0,epoch=1,lag=w2.get(),dropout=w1.get()/100, test_size=w4.get()/100)
 	#print("Dropout: ",tt.dropout,"%")
@@ -60,14 +87,10 @@ def playIt():
 		fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
 		mse.extend(hist.history['loss'])
 		vmse.extend(hist.history['val_loss'])
+		maxMse=max(maxMse,max(*mse,*vmse))
 		plt.xlim(0,epoc)
-		ax1=fig.add_subplot(111,xlim=(0,epoc)).plot(mse)
-		ax2=fig.add_subplot(111,xlim=(0,epoc)).plot(vmse)
-		#print(type(ax1))
-		#print(ax1)
-		#ax1.get_geometry()
-		#ax2.Axes.set_xlim(0,epoc)
-		#fig.add_subplot(111).plot(history.history['mean_squared_error'])
+		ax1=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse)).plot(mse)
+		ax2=fig.add_subplot(111,xlim=(0,epoc),ylim=(0,maxMse)).plot(vmse)
 		fig.legend(['Train','Val'])
 		fig.suptitle('Evaluation')
 		canvas =FigureCanvasTkAgg(fig, master=master)
@@ -92,13 +115,14 @@ def playIt():
 		canvas = FigureCanvasTkAgg(fig, master=master)
 		canvas.draw()
 		canvas.get_tk_widget().grid(row=2,column=6,columnspan=1)
-		Label(master, text=str('Epoch='+str(i))).grid(row=1, column=4, sticky=W) 
+		Label(master, text=str('Epoch='+str(i))).grid(row=1, column=4, sticky=S) 
 		i=i+1
 		master.update()
 		#time.sleep(0.0001)
 
 master = Tk() 
 master.title('LSTM Visualizer') 
+startScreen()
 
 Label(master,text='Dropout(x 0.01)').grid(row=1,column=1,sticky=N)
 w1 = Scale(master, from_=10, to=90)
@@ -108,7 +132,7 @@ Label(master,text='Lag').grid(row=1,column=2,sticky=N)
 w2 = Scale(master, from_=2, to=10)
 w2.grid(row=1,column=2,sticky=W, pady=30) 
 
-Label(master,text='Epochs').grid(row=1,column=4,sticky=N)
+#Label(master,text='Epochs').grid(row=1,column=4,sticky=S)
 w3 = Entry(master,width=10)
 w3.grid(row=1,column=4,pady=30,sticky=N)
 
@@ -121,10 +145,12 @@ lst1 = ['Select Data','Sine','Cosine','Random', 'Airline']
 var1 = StringVar()
 drop = OptionMenu(master,var1,*lst1)
 var1.set('Select Data') #default
-drop.grid(row=2, column=4, pady=20)
-
+drop.grid(row=1, column=4, pady=20)
 B = Button(text ="Start", command = playIt)
-B.grid(row=1,column=5,padx=40, pady=50)
+B.grid(row=1,column=5,padx=40, pady=50,sticky=N)
+
+rst = Button(text ="Reset", command = startScreen)
+rst.grid(row=1, column=5,padx=40, pady=10)
 
 ex = Button(text ="Quit", command = sys.exit)
 ex.grid(row=1, column=5,sticky=S,padx=40, pady=10)
