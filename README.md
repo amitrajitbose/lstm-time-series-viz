@@ -33,7 +33,7 @@ The sole purpose for the development of this software was to make it easy for le
 ## Example
 ### &nbsp;&nbsp;&nbsp;Increasing Sales dataset
 
-&nbsp;&nbsp;&nbsp;&nbsp; ![](https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Increasing-Sales-Lag-2.png)
+<img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Increasing-Sales-Lag-2.png" alt="drawing" width="200"/>
 
 
 ## Developers
