@@ -131,7 +131,7 @@ master.title('Visualizer')
 startScreen()
 
 Label(master,text='Dropout\n(x 0.01)').grid(row=1,column=1,sticky=N)
-w1 = Scale(master, from_=10, to=90)
+w1 = Scale(master, from_=0, to=90)
 w1.grid(row=1,column=1,sticky=W) 
 
 Label(master,text='Lag\n').grid(row=1,column=2,sticky=N)
