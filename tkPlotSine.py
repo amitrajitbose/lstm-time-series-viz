@@ -22,7 +22,7 @@ i=0
 play=0
 def playIt():
 	play=1
-	epoc=max(0,w3.get())
+	epoc=max(1,int(w3.get()))
 	mse=[]
 	vmse=[]
 	i=0
@@ -43,7 +43,7 @@ def playIt():
 		fig.suptitle('Evaluation')
 		canvas =FigureCanvasTkAgg(fig, master=master)
 		canvas.draw()
-		canvas.get_tk_widget().grid(row=1,column=3,columnspan=1)	
+		canvas.get_tk_widget().grid(row=1,column=6,columnspan=1)	
 	#Train Graph
 		fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
 		fig.add_subplot(111).plot(tt.predict(tt.X_train, tt.Y_train)[0])
@@ -52,7 +52,7 @@ def playIt():
 		fig.suptitle('Training Set')
 		canvas =FigureCanvasTkAgg(fig, master=master)
 		canvas.draw()
-		canvas.get_tk_widget().grid(row=2,column=1,columnspan=2)
+		canvas.get_tk_widget().grid(row=2,column=1,columnspan=5)
 
 	#Test Graph
 		fig = Figure(figsize=(4, 2), dpi=100,frameon=False)
@@ -62,7 +62,7 @@ def playIt():
 		fig.suptitle('Testing Set')
 		canvas = FigureCanvasTkAgg(fig, master=master)
 		canvas.draw()
-		canvas.get_tk_widget().grid(row=2,column=3,columnspan=1)
+		canvas.get_tk_widget().grid(row=2,column=6,columnspan=1)
 		Label(master, text=str('Epoch='+str(i))).grid(row=1, sticky=W) 
 		i=i+1
 		master.update()
@@ -79,19 +79,19 @@ Label(master,text='Lag').grid(row=1,column=2,sticky=N)
 w2 = Scale(master, from_=2, to=10)
 w2.grid(row=1,column=2,sticky=W, pady=30) 
 
-Label(master,text='Epochs').grid(row=1,column=3,sticky=N)
-w3 = Scale(master, from_=1, to=200)
-w3.grid(row=1,column=3,sticky=W)
+Label(master,text='Epochs').grid(row=1,column=4,sticky=N)
+w3 = Entry(master,width=10)
+w3.grid(row=1,column=4,pady=30,sticky=N)
 
-Label(master,text='Test Ratio(in %)').grid(row=1,column=4,sticky=N)
+Label(master,text='Test Ratio(in %)').grid(row=1,column=3,sticky=N)
 w4 = Scale(master, from_=10, to=50)
-w4.grid(row=1,column=4,sticky=W)
+w4.grid(row=1,column=3,sticky=W)
 
 B = Button(text ="Start", command = playIt)
-B.grid(row=1,column=5,sticky=W,padx=40, pady=50)
+B.grid(row=1,column=5,padx=40, pady=50)
 
 ex = Button(text ="Quit", command = sys.exit)
-ex.grid(row=2, column=5,sticky=W,padx=40, pady=10)
+ex.grid(row=1, column=5,sticky=S,padx=40, pady=10)
 #plt.plot(a)
 #Label(master, text=var1).grid(row=1, sticky=W) 
 
