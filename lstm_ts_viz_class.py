@@ -9,11 +9,11 @@ from tensorflow.keras.layers import Dense,Dropout,LSTM,Activation
 import matplotlib.pyplot as plt
 class TSViz(object):
     """LSTM On Time Series Data Visualizer"""
-    def __init__(self, data, verbose,epoch,lag,dropout):
+    def __init__(self, data, verbose, epoch,lag, dropout, test_size):
         self.data = data
         self.lag = lag
         self.epoch = epoch
-        self.test_size = 0.3
+        self.test_size = test_size
         self.dropout = dropout
         self.model = None
         self.shuffle = False
