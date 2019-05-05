@@ -1,6 +1,6 @@
 # Explore LSTM On Time Series Data (Without Any Code)
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![Generic badge](https://img.shields.io/badge/Status-In_Progress-Yellow.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Status-Ready-Green.svg)](https://shields.io/)
 
 ---------------------------------------
 
@@ -24,18 +24,58 @@ The sole purpose for the development of this software was to make it easy for le
 
 ## Running the App
 
+*   Install `REQUIREMENTS.txt`, by running `pip install -r REQUIREMENTS.txt`
 *   Open ``` app.py ``` file
 *   Set the hyperparameter values ( **Dropout, Lag, Test Ratio, Max Epoch** )
 *   Select a preloaded dataset 
 *   Click ``` Start ```
 *   To reset the console click ``` Reset ```
 
-## Example
-### &nbsp;&nbsp;&nbsp;Increasing Sales dataset
+## OS Support
+
+The application has been tested on Windows and Linux platforms. In case of any issue, feel free to raise an [issue](https://github.com/amitrajitbose/lstm-time-series-viz/issues/new).
+
+## Examples
+#### &nbsp;&nbsp;&nbsp;Increasing Sales dataset
 
 &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Increasing-Sales-Lag-10.png" alt="drawing" width="400"/>
 
+#### &nbsp;&nbsp;&nbsp;Sinusoidal Curve Dataset
+
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Sine-Wave-Lag-2.png" alt="drawing" width="400"/>
+
+## Model Architecture
+
+```
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+unified_lstm (UnifiedLSTM)   (None, LAG-1, 30)             3840      
+_________________________________________________________________
+dropout (Dropout)            (None, LAG-1, 30)             0         
+_________________________________________________________________
+unified_lstm_1 (UnifiedLSTM) (None, 30)                    7320      
+_________________________________________________________________
+dense (Dense)                (None, 1)                     31        
+=================================================================
+Total params: 11,191
+Trainable params: 11,191
+Non-trainable params: 0
+_________________________________________________________________
+None
+
+```
+
+## Preloaded Datasets
+
+Currently, the application supports 5 different datasets. We are going to add more datasets and probably improve the model in the next iteration of development. Contributions are welcomed.
+
+- Sine Wave
+- Cosine Wave
+- Increasing Sales
+- Decreasing Sales
+- Random Data
 
 ## Developers
-`Amitrajit Bose` +
-`Anirban Mukherjee`
+`Amitrajit Bose` + `Anirban Mukherjee`
