@@ -36,13 +36,16 @@ The sole purpose for the development of this software was to make it easy for le
 The application has been tested on Windows and Linux platforms. In case of any issue, feel free to raise an [issue](https://github.com/amitrajitbose/lstm-time-series-viz/issues/new).
 
 ## Examples
+
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/LSTMViz-Final.gif" alt="drawing" width="500"/>
+
 #### &nbsp;&nbsp;&nbsp;Increasing Sales dataset
 
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Increasing-Sales-Lag-10.png" alt="drawing" width="400"/>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Increasing-Sales-Lag-10.png" alt="drawing" width="500"/>
 
 #### &nbsp;&nbsp;&nbsp;Sinusoidal Curve Dataset
 
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Sine-Wave-Lag-2.png" alt="drawing" width="400"/>
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/Sine-Wave-Lag-2.png" alt="drawing" width="500"/>
 
 ## Model Architecture
 
