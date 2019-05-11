@@ -3,6 +3,8 @@
 [![Generic badge](https://img.shields.io/badge/Status-Ready-Green.svg)](https://shields.io/)
 
 ---------------------------------------
+&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/LSTMViz-Final.gif" alt="drawing" width="500"/>
+
 
 ![](http://www.microway.com/wp-content/uploads/TensorFlow_icon_180x148.png)
 
@@ -37,7 +39,6 @@ The application has been tested on Windows and Linux platforms. In case of any i
 
 ## Examples
 
-&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/amitrajitbose/lstm-time-series-viz/master/Observations/LSTMViz-Final.gif" alt="drawing" width="500"/>
 
 #### &nbsp;&nbsp;&nbsp;Increasing Sales dataset
 
